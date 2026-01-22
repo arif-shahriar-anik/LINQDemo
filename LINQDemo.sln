@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQDemo", "LINQDemo\LINQDemo.csproj", "{7A89BCDA-13DF-4426-92B5-C63B1621D0FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQMethods", "LINQMethods\LINQMethods.csproj", "{040FC9E3-4B18-4A92-9746-0850F7A2EB7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A89BCDA-13DF-4426-92B5-C63B1621D0FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A89BCDA-13DF-4426-92B5-C63B1621D0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A89BCDA-13DF-4426-92B5-C63B1621D0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A89BCDA-13DF-4426-92B5-C63B1621D0FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{040FC9E3-4B18-4A92-9746-0850F7A2EB7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040FC9E3-4B18-4A92-9746-0850F7A2EB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040FC9E3-4B18-4A92-9746-0850F7A2EB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040FC9E3-4B18-4A92-9746-0850F7A2EB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
