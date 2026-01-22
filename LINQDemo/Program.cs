@@ -1,4 +1,4 @@
-﻿using LINQMethods.Models;
+using LINQMethods.Models;
 
 namespace LINQDemo;
 
@@ -13,6 +13,10 @@ class Program
         "CountBy is great for frequency counters, keyword extraction, and simple search ranking. " +
         "In many apps, counting terms is the first step toward relevance scoring.";
 
+    /// <summary>
+    /// Program entry point; executes the AggregateByExample demonstration.
+    /// </summary>
+    /// <param name="args">Command-line arguments supplied to the process (not used by this demo).</param>
     static void Main(string[] args)
     {
         // CountByExample();
@@ -21,6 +25,8 @@ class Program
         
     /// <summary>
     /// Demonstrates the functionality of the AggregateBy LINQ method.
+    /// <summary>
+    /// Demonstrates grouping a hard-coded set of probabilities into "Low", "Medium", and "High" buckets and prints each bucket's average probability to the console.
     /// </summary>
     private static void AggregateByExample()
     {
