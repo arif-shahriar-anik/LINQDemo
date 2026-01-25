@@ -1,12 +1,7 @@
-using System.Text.RegularExpressions;
-
 namespace LINQMethods;
 
-public static partial class CountByMethod
+public static class CountByMethod
 {
-    [GeneratedRegex(@"[\w]+")] 
-    private static partial Regex WordMatcher();
-
     /// <summary>
     /// Calculates the term frequency for all words in a given document.
     /// </summary>
@@ -15,9 +10,9 @@ public static partial class CountByMethod
     public static IEnumerable<KeyValuePair<string, int>> CalculateTermFrequency(
         string document)
     {
-        var words = WordMatcher()
-            .Matches(document)
-            .Select(static match => match.Value.ToLowerInvariant());
+        ArgumentNullException.ThrowIfNull(document);
+
+        var words = Helpers.DocumentHelper.SplitWords(document);
 
         return words
             .CountBy(static word => word)
@@ -32,9 +27,9 @@ public static partial class CountByMethod
     public static IEnumerable<KeyValuePair<string, int>> CalculateTermFrequencyOld(
         string document)
     {
-        var words = WordMatcher()
-            .Matches(document)
-            .Select(static match => match.Value.ToLowerInvariant());
+        ArgumentNullException.ThrowIfNull(document);
+
+        var words = Helpers.DocumentHelper.SplitWords(document);
         
         return words
             .GroupBy(static word => word)
