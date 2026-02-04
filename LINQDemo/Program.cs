@@ -1,4 +1,7 @@
-﻿using LINQMethods.Helpers;
+﻿using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Loggers;
+using BenchmarkDotNet.Running;
+using LINQMethods.Helpers;
 using LINQMethods.Models;
 
 namespace LINQDemo;
@@ -13,13 +16,20 @@ class Program
         "In .NET., LINQ makes data queries readable, and CountBy makes counting terms easy. " +
         "CountBy is great for frequency counters, keyword extraction, and simple search ranking. " +
         "In many apps, counting terms is the first step toward relevance scoring.";
-
+    
+    /// <summary>
+    /// Represents the number of top-ranked words to retrieve
+    /// </summary>
+    private const int TopRankedWordsCount = 5;
+    
     static void Main(string[] args)
     {
         // CountByExample();
         // AggregateByExample();
         // AggregateByExampleWithoutCustomAccumulator();
-        IndexExample();
+        // IndexExample();
+        // CompositionExample();
+        // RunBenchmark();
     }
         
     /// <summary>
@@ -92,17 +102,41 @@ class Program
             Console.WriteLine($"{word}: {frequency}");
         }
     }
+        
+    /// <summary>
+    /// Demonstrates the composition of CountBy and Index LINQ methods
+    /// </summary>
+    private static void CompositionExample()
+    {
+        var topRankedWords = LINQMethods
+            .CountByMethod.CalculateTermFrequency(Document)
+            .Index()
+            .Take(TopRankedWordsCount);
+
+        foreach (var (index, keyValuePair) in topRankedWords)
+        {
+            Console.WriteLine($"{index + 1}: {keyValuePair.Key} - {keyValuePair.Value}");
+        }
+    }
     
     /// <summary>
     /// Demonstrates the functionality of the Index LINQ method
     /// </summary>
     private static void IndexExample()
     {
-        var words= DocumentHelper.SplitWords(Document);
+        var words = DocumentHelper.SplitWords(Document);
 
         foreach (var (index, word) in words.Index())
         {
             Console.WriteLine($"{index + 1}: {word}");
         }
+    }
+    
+    private static void RunBenchmark()
+    {
+        var config = DefaultConfig.Instance
+            .AddLogger(ConsoleLogger.Default);
+        
+        var summary = BenchmarkRunner.Run<LINQMethods.Benchmark.CountByBenchmark>();
     }
 }
