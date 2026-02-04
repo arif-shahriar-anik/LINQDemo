@@ -29,7 +29,7 @@ class Program
         // AggregateByExampleWithoutCustomAccumulator();
         // IndexExample();
         // CompositionExample();
-        // RunBenchmark();
+        RunBenchmark();
     }
         
     /// <summary>
@@ -136,7 +136,7 @@ class Program
     {
         var config = DefaultConfig.Instance
             .AddLogger(ConsoleLogger.Default);
-        
-        var summary = BenchmarkRunner.Run<LINQMethods.Benchmark.CountByBenchmark>();
+
+        BenchmarkRunner.Run<LINQMethods.Benchmark.CountByBenchmark>(config);
     }
 }
